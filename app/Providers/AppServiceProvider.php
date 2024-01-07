@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $nav_lsp = LoaiSach::all(); // lấy để hiển thị loại sản phẩm trên thanh navbar
                 $view->with('nav_lsp', $nav_lsp);
+			$loaisach = LoaiSach::all();
+				$view->with('loaisach', $loaisach);
         });
 
 		Schema::defaultStringLength(191);

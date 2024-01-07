@@ -10,18 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('banners', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('banners');
-    }
+	{
+		Schema::create('banner', function (Blueprint $table) {
+			$table->id();
+			$table->string('banner');
+            $table->string('link')->nullable();
+            $table->boolean('status');
+			$table->timestamps();
+			$table->engine = 'InnoDB';
+		});
+	}
+	
+	/** 
+	 * Reverse the migrations.
+	 */
+	public function down(): void
+	{
+		Schema::dropIfExists('banner');
+	}
 };

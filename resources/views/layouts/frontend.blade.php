@@ -43,10 +43,10 @@
                 <div class="navbar navbar-expand-lg navbar-light">
                     <div class="container">
                         <a class="navbar-brand d-none d-sm-block flex-shrink-0" href="{{ route('frontend.home') }}">
-                            <img src="{{ asset('public/img/logo-dark.png') }}" width="142" />
+                            <img src="{{ asset('public/img/logo-screen.png') }}" width="142" />
                         </a>
                         <a class="navbar-brand d-sm-none flex-shrink-0 me-2" href="{{ route('frontend.home') }}">
-                            <img src="{{ asset('public/img/logo-dark.png') }}" width="74" />
+                            <img src="{{ asset('public/img/logo-screen.png') }}" width="74" />
                         </a>
                         <div class="input-group d-none d-lg-flex mx-4">
                             <input class="form-control rounded-end pe-5" type="text" placeholder="Tìm kiếm" />
@@ -124,17 +124,17 @@
                             <ul class="navbar-nav">
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="{{ route('frontend.sach') }}"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside"><i
-                                            class="ci-gift me-2"></i>Sách</a>
+                                    <a class="nav-link dropdown-toggle" href="{{ route('frontend.sach') }}" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                        <i class="ci-gift me-2"></i>Sách
+                                    </a>
                                     <ul class="dropdown-menu">
-                                        @foreach ($nav_lsp as $navlsp)
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('frontend.sanpham.phanloai', ['tenloai_slug' => $navlsp->tenloai_slug]) }}">{{ $navlsp->tenloai }}</a>
+                                        @foreach($loaisach as $ls)
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('frontend.sach.phanloai', ['tenloai_slug' => $ls->tenloai_slug]) }}">
+                                                    {{ $ls->tenloai }}
+                                                </a>
                                             </li>
                                         @endforeach
-                                        <li><a class="dropdown-item" href="#">Máy tính bảng</a></li>
-                                        <li><a class="dropdown-item" href="#">Máy tính xách tay</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -165,13 +165,13 @@
                     <div class="col-md-6 text-center text-md-start mb-4">
                         <div class="text-nowrap mb-4">
                             <a class="d-inline-block align-middle mt-n1 me-3" href="#"><img class="d-block"
-                                    src="{{ asset('public/img/footer-logo-light.png') }}" width="117" /></a>
+                                    src="{{ asset('public/img/logo-small.png') }}" width="70" /></a>
                         </div>
                         <div class="widget widget-links widget-light">
                             <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
                                 <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Trang
                                         chủ</a></li>
-                                <li class="widget-list-item me-4"><a class="widget-list-link" href="#">sach</a>
+                                <li class="widget-list-item me-4"><a class="widget-list-link" href="#">sách</a>
                                 </li>
                                 <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Tin
                                         tức</a></li>
@@ -223,5 +223,4 @@
     <script src="{{ asset('public/js/theme.min.js') }}"></script>
 
 </body>
-
 </html>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -23,10 +26,18 @@ class BannerController extends Controller
     {
         // Kiểm tra
         $request->validate([
-            'banner' => ['required', 'string'],
+            'hinhanh' => ['nullable', 'image', 'max:2048'],
             'link' => ['required', 'string'],
             'status' => ['required', 'boolean'],
         ]);
+        // Upload hình ảnh
+        $path = '';
+        if ($request->hasFile('banner')) {
+            // Lưu ảnh vào thư mục trong storage
+            $banner = $request->file('banner');
+            $path = $banner->store('banner', 'public');
+            return redirect()->back()->with('success', 'Tải ảnh thành công!');
+        }
         $orm = new Banner();
         $orm->banner = $request->banner;
         $orm->link = $request->link;
@@ -42,13 +53,14 @@ class BannerController extends Controller
     }
 
     public function postSua(Request $request, $id)
-    {  
-       // Kiểm tra
-       $request->validate([
-        'banner' => ['required', 'string'],
-        'link' => ['required', 'string'],
-        'status' => ['required', 'boolean'],
-    ]);
+    {
+        // Kiểm tra
+        $request->validate([
+            'banner' => ['required', 'string'],
+            'link' => ['required', 'string'],
+            'status' => ['required', 'boolean'],
+        ]);
+
 
         $orm = Banner::find($id);
         $orm->banner = $request->banner;
@@ -64,7 +76,7 @@ class BannerController extends Controller
     public function getXoa($id)
     {
         $orm = Banner::find($id);
-		$orm->delete();
+        $orm->delete();
 
         return redirect()->route('admin.banner');
     }

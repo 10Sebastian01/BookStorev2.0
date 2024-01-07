@@ -7,6 +7,7 @@ use App\Models\BaiViet;
 use App\Models\ChuDe;
 use App\Models\DonHang;
 use App\Models\Sach;
+use App\Models\Banner;
 use App\Models\_ChiTietDonHang;
 use App\Mail\DatHangThanhCongEmail;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class HomeController extends Controller
 	{
 		$loaisach = LoaiSach::all();
 		$nhaxuatban = NhaXuatBan::all();
-		return view('frontend.home', compact('loaisach', 'nhaxuatban'));
+		$banners = Banner::all();
+		return view('frontend.home', compact('loaisach', 'nhaxuatban', 'banners'));
 	}
     public function getLoaiSanPham()
     {
