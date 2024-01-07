@@ -40,12 +40,7 @@ class TinhTrangController extends Controller
 	}
 	
 	public function postSua(Request $request, $id)
-	{
-		// Kiểm tra
-		$request->validate([
-			'tinhtrang' => ['required', 'string', 'max:191', 'unique:tinhtrang,tinhtrang,' . $id],
-		]);
-		
+	{ 
 		$orm = TinhTrang::find($id);
 		$orm->tinhtrang = $request->tinhtrang;
 		$orm->save();
