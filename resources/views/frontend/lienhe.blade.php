@@ -1,6 +1,6 @@
 ﻿@extends('layouts.frontend')
 
-@section('title', 'Sản phẩm')
+@section('title', 'Sách')
 
 @section('content')
     <div class="bg-secondary py-4">

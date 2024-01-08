@@ -31,9 +31,6 @@
 			<div class="bg-white rounded-3 shadow-lg pt-1 mb-5 mb-lg-0">
 				<div class="d-md-flex justify-content-between align-items-center text-center text-md-start p-4">
 					<div class="d-md-flex align-items-center">
-						<div class="img-thumbnail rounded-circle position-relative flex-shrink-0 mx-auto mb-2 mx-md-0 mb-md-0" style="width:6.375rem;">
-							<img class="rounded-circle" src="{{ asset('public/img/avatar.jpg') }}" />
-						</div>
 
 						<div class="ps-md-3">
 
@@ -64,19 +61,11 @@
 						</li>
 						@else
 						<li class="border-bottom mb-0">
-							<a class="nav-link-style d-flex align-items-center px-4 py-3" href="#">
+							<a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('user.donhang') }}">
 								<i class="ci-bag opacity-60 me-2"></i>Đơn hàng<span class="fs-sm text-muted ms-auto">0</span>
 							</a>
 						</li>
 						@endif
-
-						<li class="border-bottom mb-0">
-
-							<a class="nav-link-style d-flex align-items-center px-4 py-3" href="#">
-								<i class="ci-heart opacity-60 me-2"></i>Sản phẩm yêu thích<span class="fs-sm text-muted ms-auto">0</span>
-							</a>
-						</li>
-
 						<li class="mb-0">
 
 							<a class="nav-link-style d-flex align-items-center px-4 py-3" href="#">

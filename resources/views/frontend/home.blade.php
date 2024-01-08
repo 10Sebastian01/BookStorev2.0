@@ -15,15 +15,13 @@
                         <p class="h5 text-body fw-light">Số lượng sản phẩm có hạn!</p>
                         <a class="btn btn-accent" href="#">Xem chi tiết<i class="ci-arrow-right fs-ms ms-1"></i></a>
                     </div>
+                    
                 <div class="col-md-7">
-                    <div class="px-4 pe-sm-0 ps-sm-5">
-                        @foreach ($banners as $banner)
-                            <div class="banner">
-                                <img src="{{ asset('storage/' . $banner->banner) }}" alt="banner">
-                                <!-- Thêm các thông tin khác về banner nếu cần -->
-                            </div>
-                        @endforeach
-                    </div>
+                    @foreach ($banners as $bn)
+                        <div class="banner">    
+                            <img src="{{ env('APP_URL') . '/public/' . $bn->link }}" />                          
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

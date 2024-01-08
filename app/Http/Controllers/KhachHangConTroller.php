@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NguoiDung;
 use App\Models\DonHang;
 use App\Models\_ChiTietDonHang;
+use App\Models\TinhTrang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -79,7 +80,15 @@ class KhachHangConTroller extends Controller
 
  public function getDonHang($id = '')
  {
-       return view('user.donhang');
+      if(Auth::check())
+            {
+                  $tinhtrang = TinhTrang::all();
+                  $nguoidung = NguoiDung::find(Auth::user()->id);
+                  $donhang= DonHang::all();
+                  return view('user.donhang', compact('donhang', 'nguoidung', 'tinhtrang'));
+            }
+            else
+                  return redirect()->route('user.dangnhap'); 
  }
 
  public function postDonHang(Request $request, $id)

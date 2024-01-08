@@ -12,7 +12,7 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -39,31 +39,72 @@
 <body class="handheld-toolbar-enabled">
     <main class="page-wrapper">
         <header class="shadow-lg">
-            <div class="navbar-sticky bg-light">
+            <div class="navbar bg-light">
                 <div class="navbar navbar-expand-lg navbar-light">
                     <div class="container">
                         <a class="navbar-brand d-none d-sm-block flex-shrink-0" href="{{ route('frontend.home') }}">
                             <img src="{{ asset('public/img/logo-screen.png') }}" width="142" />
                         </a>
-                        <a class="navbar-brand d-sm-none flex-shrink-0 me-2" href="{{ route('frontend.home') }}">
-                            <img src="{{ asset('public/img/logo-screen.png') }}" width="74" />
-                        </a>
-                        <div class="input-group d-none d-lg-flex mx-4">
-                            <input class="form-control rounded-end pe-5" type="text" placeholder="Tìm kiếm" />
-                            <i
-                                class="ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i>
-                        </div>
-                        <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarCollapse">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <a class="navbar-tool navbar-stuck-toggler" href="#menu">
-                                <span class="navbar-tool-tooltip">Mở rộng menu</span>
-                                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div>
+                        <div class="input-group">
+                            <a class="nav-link" href="{{ route('frontend.home') }}">
+                                <i class="ci-home me-2"></i>Trang chủ
                             </a>
+                        </div>
+                        <div class="dropdown ps-lg-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Menu
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">
+                                <li class="nav-item dropdown ps-lg-4">
+                                    <a class="nav-link dropdown-toggle" href="{{ route('frontend.sach') }}"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                        <i class="ci-gift me-2"></i>Sách
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach ($loaisach as $ls)
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('frontend.sach.phanloai', ['tenloai_slug' => $ls->tenloai_slug]) }}">
+                                                    {{ $ls->tenloai }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="dropdown-item">
+                                <li class="nav-item ps-lg-4">
+                                    <a class="nav-link" href="{{ route('frontend.baiviet') }}"><i
+                                            class="ci-globe me-2"></i>Tin tức</a>
+                                </li>
+                                </li>
+                                <li class="dropdown-item">
+                                <li class="nav-item ps-lg-4">
+                                    <a class="nav-link" href="{{ route('frontend.lienhe') }}"><i
+                                            class="ci-support me-2"></i>Liên hệ</a>
+                                </li>
+                                </li>
+                            </ul>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="navbar navbar-expand-xl navbar-light">
+                    <div class="input-group d-none d-lg-flex mx-4">
+                        <input class="form-control rounded-end pe-5" type="text" placeholder="Tìm kiếm" />
+                        <i
+                            class="ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i>
+                    </div>
 
+                </div>
+
+                <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
+                    <div class="container">
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
                             <!-- Login area -->
                             @guest
                                 <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{ route('user.dangnhap') }}">
@@ -100,56 +141,6 @@
                                 <a class="navbar-tool-text" href="{{ route('frontend.giohang') }}"><small>Giỏ
                                         hàng</small>{{ Cart::priceTotal() ?? 0 }}đ</a>
                             </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
-                    <div class="container">
-                        <div class="collapse navbar-collapse" id="navbarCollapse">
-                            <div class="input-group d-lg-none my-3">
-                                <i
-                                    class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
-                                <input class="form-control rounded-start" type="text" placeholder="Tìm kiếm" />
-                            </div>
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link ps-lg-0" href="{{ route('frontend.home') }}">
-                                        <i class="ci-home me-2"></i>Trang chủ
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav">
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="{{ route('frontend.sach') }}" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                                        <i class="ci-gift me-2"></i>Sách
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @foreach($loaisach as $ls)
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route('frontend.sach.phanloai', ['tenloai_slug' => $ls->tenloai_slug]) }}">
-                                                    {{ $ls->tenloai }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('frontend.baiviet') }}"><i
-                                            class="ci-globe me-2"></i>Tin tức</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('frontend.tuyendung') }}"><i
-                                            class="ci-loudspeaker me-2"></i>Danh mục</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('frontend.lienhe') }}"><i
-                                            class="ci-support me-2"></i>Liên hệ</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -171,16 +162,23 @@
                             <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
                                 <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Trang
                                         chủ</a></li>
-                                <li class="widget-list-item me-4"><a class="widget-list-link" href="#">sách</a>
+                                <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Sách</a>
                                 </li>
                                 <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Tin
                                         tức</a></li>
                                 <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Danh
                                         mục</a></li>
-                                <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Liên
+                                <li class="widget-list-item me-4"><a class="widget-list-link" href="{{ route('frontend.lienhe') }}">Liên
                                         hệ</a></li>
                             </ul>
                         </div>
+                        <div class="widget widget-links widget-light">
+                            <h3 class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start text-light">About H&N</h3>
+                            <p class ='text-light'>BookStore H&N là đề tài đồ án của môn Công Nghệ Web - PHP do Cao Văn Hóa và Hồ Phú Nghĩa thực
+                                hiện. Đồ án được viết bằng ngôn ngữ php dựa trên framework laravel.</p>
+                            <p><a href="{{ route('frontend.lienhe') }}" class="footer-link-more">Xem thêm</a></p>
+                        </div>
+                        
                     </div>
                     <div class="col-md-6 text-center text-md-end mb-4">
                         <div class="mb-3">
@@ -202,7 +200,6 @@
             </div>
         </div>
     </footer>
-
     <a class="btn-scroll-top" href="#top" data-scroll>
         <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
         <i class="btn-scroll-top-icon ci-arrow-up"></i>
@@ -223,4 +220,5 @@
     <script src="{{ asset('public/js/theme.min.js') }}"></script>
 
 </body>
+
 </html>
