@@ -65,7 +65,7 @@
 						<h2 class="h4">Bình luận<span class="badge bg-secondary fs-sm text-body align-middle ms-2">{{ $baiviet->BinhLuanBaiViet->count() }}</span></h2>
 						@foreach($baiviet->BinhLuanBaiViet as $value)
 							<div class="d-flex align-items-start py-4">
-								<img class="rounded-circle" src="{{ asset('public/img/03.jpg') }}" width="50" />
+								<img class="rounded-circle" src="{{ asset('public/img/ava.jpg') }}" width="50" />
 								<div class="ps-3">
 									<div class="d-flex justify-content-between align-items-center mb-2">
 										<h6 class="fs-md mb-0">{{ $value->NguoiDung->name }}</h6>

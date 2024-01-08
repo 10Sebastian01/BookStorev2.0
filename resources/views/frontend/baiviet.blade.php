@@ -63,7 +63,7 @@
 
                             <div class="card-footer d-flex align-items-center fs-xs">
                                 <a class="blog-entry-meta-link" href="#user">
-                                    <div class="blog-entry-author-ava"><img src="{{ asset('public/img/03.jpg') }}" /></div>{{ $value->NguoiDung->name }}
+                                    <div class="blog-entry-author-ava"><img src="{{ asset('public/img/ava.jpg') }}" /></div>{{ $value->NguoiDung->name }}
                                 </a>
 
                                 <div class="ms-auto text-nowrap">

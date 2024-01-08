@@ -142,7 +142,7 @@
 
 				<div class="bg-secondary rounded-3 p-4 mb-4">
 					<div class="d-flex align-items-center">
-						<img class="rounded" src="{{ asset('public/img/avatar.jpg') }}" width="90" />
+						<img class="rounded" src="{{ asset('public/img/ava.jpg') }}" width="90" />
 						<div class="ps-3">
 							<button class="btn btn-light btn-shadow btn-sm mb-2" type="button">
 								<i class="ci-loading me-2"></i>Đổi ảnh đại diện

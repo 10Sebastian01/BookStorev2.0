@@ -13,8 +13,6 @@
                             <h3 class="mt-4 mb-1 text-body fw-light">Sách hay mới nhất</h3>
                             <h2 class="mb-1">Phiên bản giới hạn</h2>
                             <p class="h5 text-body fw-light">Số lượng sản phẩm có hạn!</p>
-                            <a class="btn btn-accent" href="#">Xem chi tiết<i
-                                    class="ci-arrow-right fs-ms ms-1"></i></a>
                         </div>
 
                     </div>
@@ -27,13 +25,14 @@
                                             style="margin-right:-.0625rem;">
                                             <img class="d-block mx-auto" src="{{ env('APP_URL') . '/public/' . $bn->link }}"
                                                 style="width:500px;" />
+                                                <a class="btn row align-items-center " href="#">Xem chi tiết<i
+                                                    class="ci-arrow-right fs-ms ms-1"></i></a>
                                         </a>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
-
             </div>
     </section>
 
