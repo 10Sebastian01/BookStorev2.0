@@ -7,24 +7,34 @@
     <section class="container mt-4 mb-grid-gutter">
         <div class="bg-faded-info rounded-3 py-4">
             <div class="row align-items-center">
-                <div class="col-md-5">
-                    <div>
-                        <span class="badge bg-danger">Khuyến mãi đặc biệt</span>
-                        <h3 class="mt-4 mb-1 text-body fw-light">Sản phẩm mới 100%</h3>
-                        <h2 class="mb-1">iPad Pro Bản Mới</h2>
-                        <p class="h5 text-body fw-light">Số lượng sản phẩm có hạn!</p>
-                        <a class="btn btn-accent" href="#">Xem chi tiết<i class="ci-arrow-right fs-ms ms-1"></i></a>
-                    </div>
-                    
-                <div class="col-md-7">
-                    @foreach ($banners as $bn)
-                        <div class="banner">    
-                            <img src="{{ env('APP_URL') . '/public/' . $bn->link }}" />                          
+                    <div class="col-md-4">
+                        <div class="px-4 pe-sm-0 ps-sm-5">
+                            <span class="badge bg-danger">Khuyến mãi đặc biệt</span>
+                            <h3 class="mt-4 mb-1 text-body fw-light">Sách hay mới nhất</h3>
+                            <h2 class="mb-1">Phiên bản giới hạn</h2>
+                            <p class="h5 text-body fw-light">Số lượng sản phẩm có hạn!</p>
+                            <a class="btn btn-accent" href="#">Xem chi tiết<i
+                                    class="ci-arrow-right fs-ms ms-1"></i></a>
                         </div>
-                    @endforeach
-                </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tns-carousel border-end">
+                            <div class="tns-carousel-inner">
+                                @foreach ($banners as $bn)
+                                    <div>
+                                        <a class="d-block py-4 py-sm-5 px-2" href="#"
+                                            style="margin-right:-.0625rem;">
+                                            <img class="d-block mx-auto" src="{{ env('APP_URL') . '/public/' . $bn->link }}"
+                                                style="width:500px;" />
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
             </div>
-        </div>
     </section>
 
     <section class="container">
